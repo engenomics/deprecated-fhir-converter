@@ -1,0 +1,19 @@
+{
+    "species": {"text": "Homo sapiens"},
+    "id": "t2616",
+    "type": "DNA",
+    "variation": {
+        "start": 12476727,
+        "end": 12476728,
+        "observedAllele": "T",
+        "referenceAllele": "G"
+    },
+    "resourceType": "Sequence",
+    "referenceSeq": {
+        "genomebuild": "37",
+        "windowStart": "12476720",
+        "chromosome": 22,
+        "windowEnd": "12476730",
+        "referenceSeqId": "GRCh"
+    }
+}

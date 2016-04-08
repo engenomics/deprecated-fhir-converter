@@ -1,0 +1,19 @@
+{
+    "species": {"text": "Homo sapiens"},
+    "id": "t7744",
+    "type": "DNA",
+    "variation": {
+        "start": 43625202,
+        "end": 43625203,
+        "observedAllele": "-",
+        "referenceAllele": "T"
+    },
+    "resourceType": "Sequence",
+    "referenceSeq": {
+        "genomebuild": "37",
+        "windowStart": "43625200",
+        "chromosome": 22,
+        "windowEnd": "43625210",
+        "referenceSeqId": "GRCh"
+    }
+}

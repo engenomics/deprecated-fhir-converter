@@ -1,0 +1,19 @@
+{
+    "species": {"text": "Homo sapiens"},
+    "id": "t9104",
+    "type": "DNA",
+    "variation": {
+        "start": 79324246,
+        "end": 79324247,
+        "observedAllele": "T",
+        "referenceAllele": "C"
+    },
+    "resourceType": "Sequence",
+    "referenceSeq": {
+        "genomebuild": "37",
+        "windowStart": "79324240",
+        "chromosome": 22,
+        "windowEnd": "79324250",
+        "referenceSeqId": "GRCh"
+    }
+}

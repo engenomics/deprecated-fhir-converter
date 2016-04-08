@@ -1,0 +1,19 @@
+{
+    "species": {"text": "Homo sapiens"},
+    "id": "t6516",
+    "type": "DNA",
+    "variation": {
+        "start": 34512140,
+        "end": 34512137,
+        "observedAllele": "-",
+        "referenceAllele": "CTTAA"
+    },
+    "resourceType": "Sequence",
+    "referenceSeq": {
+        "genomebuild": "37",
+        "windowStart": "34512140",
+        "chromosome": 22,
+        "windowEnd": "34512150",
+        "referenceSeqId": "GRCh"
+    }
+}

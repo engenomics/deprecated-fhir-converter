@@ -1,0 +1,19 @@
+{
+    "species": {"text": "Homo sapiens"},
+    "id": "t6047",
+    "type": "DNA",
+    "variation": {
+        "start": 32633767,
+        "end": 32633768,
+        "observedAllele": "T",
+        "referenceAllele": "C"
+    },
+    "resourceType": "Sequence",
+    "referenceSeq": {
+        "genomebuild": "37",
+        "windowStart": "32633760",
+        "chromosome": 22,
+        "windowEnd": "32633770",
+        "referenceSeqId": "GRCh"
+    }
+}

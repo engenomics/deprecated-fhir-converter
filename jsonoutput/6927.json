@@ -1,0 +1,19 @@
+{
+    "species": {"text": "Homo sapiens"},
+    "id": "t6927",
+    "type": "DNA",
+    "variation": {
+        "start": 35733479,
+        "end": 35733476,
+        "observedAllele": "-",
+        "referenceAllele": "TAAGG"
+    },
+    "resourceType": "Sequence",
+    "referenceSeq": {
+        "genomebuild": "37",
+        "windowStart": "35733470",
+        "chromosome": 22,
+        "windowEnd": "35733480",
+        "referenceSeqId": "GRCh"
+    }
+}

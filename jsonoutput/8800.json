@@ -1,0 +1,19 @@
+{
+    "species": {"text": "Homo sapiens"},
+    "id": "t8800",
+    "type": "DNA",
+    "variation": {
+        "start": 78080515,
+        "end": 78080516,
+        "observedAllele": "G",
+        "referenceAllele": "A"
+    },
+    "resourceType": "Sequence",
+    "referenceSeq": {
+        "genomebuild": "37",
+        "windowStart": "78080510",
+        "chromosome": 22,
+        "windowEnd": "78080520",
+        "referenceSeqId": "GRCh"
+    }
+}

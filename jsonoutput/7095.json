@@ -1,0 +1,19 @@
+{
+    "species": {"text": "Homo sapiens"},
+    "id": "t7095",
+    "type": "DNA",
+    "variation": {
+        "start": 35957279,
+        "end": 35957277,
+        "observedAllele": "-",
+        "referenceAllele": "TGTC"
+    },
+    "resourceType": "Sequence",
+    "referenceSeq": {
+        "genomebuild": "37",
+        "windowStart": "35957270",
+        "chromosome": 22,
+        "windowEnd": "35957280",
+        "referenceSeqId": "GRCh"
+    }
+}

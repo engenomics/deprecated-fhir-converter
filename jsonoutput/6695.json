@@ -1,0 +1,19 @@
+{
+    "species": {"text": "Homo sapiens"},
+    "id": "t6695",
+    "type": "DNA",
+    "variation": {
+        "start": 35074170,
+        "end": 35074162,
+        "observedAllele": "-",
+        "referenceAllele": "GACGGATCCA"
+    },
+    "resourceType": "Sequence",
+    "referenceSeq": {
+        "genomebuild": "37",
+        "windowStart": "35074170",
+        "chromosome": 22,
+        "windowEnd": "35074180",
+        "referenceSeqId": "GRCh"
+    }
+}

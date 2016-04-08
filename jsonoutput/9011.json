@@ -1,0 +1,19 @@
+{
+    "species": {"text": "Homo sapiens"},
+    "id": "t9011",
+    "type": "DNA",
+    "variation": {
+        "start": 79118240,
+        "end": 79118238,
+        "observedAllele": "-",
+        "referenceAllele": "ACAT"
+    },
+    "resourceType": "Sequence",
+    "referenceSeq": {
+        "genomebuild": "37",
+        "windowStart": "79118240",
+        "chromosome": 22,
+        "windowEnd": "79118250",
+        "referenceSeqId": "GRCh"
+    }
+}

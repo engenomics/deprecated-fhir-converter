@@ -1,0 +1,19 @@
+{
+    "species": {"text": "Homo sapiens"},
+    "id": "t513",
+    "type": "DNA",
+    "variation": {
+        "start": 2059341,
+        "end": 2059342,
+        "observedAllele": "C",
+        "referenceAllele": "T"
+    },
+    "resourceType": "Sequence",
+    "referenceSeq": {
+        "genomebuild": "37",
+        "windowStart": "2059340",
+        "chromosome": 22,
+        "windowEnd": "2059350",
+        "referenceSeqId": "GRCh"
+    }
+}

@@ -1,0 +1,19 @@
+{
+    "species": {"text": "Homo sapiens"},
+    "id": "t5943",
+    "type": "DNA",
+    "variation": {
+        "start": 32457307,
+        "end": 32457312,
+        "observedAllele": "CAGAA",
+        "referenceAllele": "C"
+    },
+    "resourceType": "Sequence",
+    "referenceSeq": {
+        "genomebuild": "37",
+        "windowStart": "32457300",
+        "chromosome": 22,
+        "windowEnd": "32457310",
+        "referenceSeqId": "GRCh"
+    }
+}
