@@ -1,5 +1,6 @@
 package org.engenomics.fhirconverter;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
@@ -15,35 +16,24 @@ import java.util.stream.Stream;
 
 public class SGVtoJSON {
     // The Sequence Graph Output
-    List<String> seqGraph = new ArrayList<>(Files.readAllLines(new File("variations.sgo").toPath(), Charset.defaultCharset()));
+    List<String> seqGraph = new ArrayList<>(Files.readAllLines(new File("private/output.txt").toPath(), Charset.defaultCharset()));
 
     // The JSON object itself
     private List<JSONObject> objs = new ArrayList<>();
 
-    private int chromosomeNumber = 22; //TODO: Read in automatically
-
-    private String referenceGenome;
-    private String referenceGenomeBuild;
-
     private int atLine = 0;
+    
+    private List<Sewi> sequences = new ArrayList<>();
 
     public SGVtoJSON(String vcfFilePath) throws IOException {
         // Process VCF file to get reference genome and build
         try (Stream<String> lines = Files.lines(Paths.get(vcfFilePath), Charset.defaultCharset())) {
-            lines.forEachOrdered(this::process);
+        	//System.out.println(lines);
+            //lines.forEachOrdered(this::process);
         }
 
         // Remove header of sequence graph file
         seqGraph.remove(0);
-    }
-
-    private void process(String line) {
-        //Reference genome information
-        if (line.contains("##reference")) {
-            String referenceGenomeAndBuild = Utils.getBetween(line, "=", ".");
-            this.referenceGenome = referenceGenomeAndBuild.replaceAll("\\P{L}+", "");
-            this.referenceGenomeBuild = referenceGenomeAndBuild.replaceAll("[^\\d.]", "");
-        }
     }
 
     protected void convert(String inputFilePath) throws IOException {
@@ -53,47 +43,66 @@ public class SGVtoJSON {
     public List<JSONObject> getObjs() {
         return this.objs;
     }
+    
+    public List<Sewi> getSequences() {
+    	return sequences;
+    }
 
     private void make(String line) {
         //Add a new JSON object to the list
-        objs.add(new JSONObject());
+    	try{
+    		String[] goodSeqGraphSections = getSectionsOfLine();
+    		Sewi sequence = new Sewi(goodSeqGraphSections);
+    		this.sequences.add(sequence);
+    		//System.out.println(sequence.getFhirChromJsonObj());
+    		objs.add(sequence.getFhirSeqJsonObj());
+    		atLine++;
+    		
+    		/*objs.add(new JSONObject());
 
-        objs.get(atLine).put("resourceType", "Sequence");
-        objs.get(atLine).put("id", "t" + atLine);
-        objs.get(atLine).put("type", "DNA");
+            objs.get(atLine).put("resourceType", "Sequence");
+            objs.get(atLine).put("id", "t" + atLine);
+            objs.get(atLine).put("type", "DNA");
 
-        JSONObject species = new JSONObject();
-        species.put("text", "Homo sapiens");
-        objs.get(atLine).put("species", species);
+            JSONObject species = new JSONObject();
+            species.put("text", "Homo sapiens");
+            objs.get(atLine).put("species", species);
 
+            //TODO:
+            JSONObject referenceSeq = new JSONObject();
+            referenceSeq.put("chromosome", chromosomeNumber);
+            referenceSeq.put("genomebuild", this.referenceGenomeBuild);
+            referenceSeq.put("referenceSeqId", this.referenceGenome);
 
-        JSONObject referenceSeq = new JSONObject();
-        referenceSeq.put("chromosome", chromosomeNumber);
-        referenceSeq.put("genomebuild", this.referenceGenomeBuild);
-        referenceSeq.put("referenceSeqId", this.referenceGenome);
+            String[] goodSeqGraphSections = getSectionsOfLine();
+            String windowStart = goodSeqGraphSections[0];
+            String windowEnd = goodSeqGraphSections[1];
+            
+            //TODO:
+            String variationString = goodSeqGraphSections[2];
 
-        String[] goodSeqGraphSections = getSectionsOfLine();
-        String windowStart = goodSeqGraphSections[0];
-        String windowEnd = goodSeqGraphSections[1];
-        String variationString = goodSeqGraphSections[2];
+            referenceSeq.put("windowStart", windowStart);
+            referenceSeq.put("windowEnd", windowEnd);
 
-        referenceSeq.put("windowStart", windowStart);
-        referenceSeq.put("windowEnd", windowEnd);
-
-        objs.get(atLine).put("referenceSeq", referenceSeq);
-
-
-        JSONObject variation = new JSONObject();
-        Sewi variationSewi = getSewi(variationString);
-        variation.put("start", variationSewi.getStart());
-        variation.put("end", variationSewi.getEnd());
-        variation.put("observedAllele", variationSewi.getObservedAllele());
-        variation.put("referenceAllele", variationSewi.getReferenceAllele());
-
-        objs.get(atLine).put("variation", variation);
+            objs.get(atLine).put("referenceSeq", referenceSeq);
 
 
-        atLine++;
+            JSONObject variation = new JSONObject();
+            Sewi variationSewi = getSewi(variationString);
+            variation.put("start", variationSewi.getStart());
+            variation.put("end", variationSewi.getEnd());
+            variation.put("observedAllele", variationSewi.getObservedAllele());
+            variation.put("referenceAllele", variationSewi.getReferenceAllele());
+
+            objs.get(atLine).put("variation", variation);
+
+
+            atLine++;*/
+    	}
+    	catch(JSONException e){
+    		e.printStackTrace();
+    	}
+        
     }
 
     /**
@@ -102,7 +111,7 @@ public class SGVtoJSON {
      * @param variationString - the variation part of the line
      * @return a Sewi with the start, end, was, and is parsed from the variation string
      */
-    private Sewi getSewi(String variationString) {
+    /*private Sewi getSewi(String variationString) {
         String[] varSections = variationString.split(":");
 
         int chromosome = Integer.parseInt(varSections[0]);
@@ -140,7 +149,7 @@ public class SGVtoJSON {
         int end = start + (is.length() - was.length()) + 1;
 
         return new Sewi(start, end, was, is);
-    }
+    }*/
 
     // Returns an array of window start, window end, and the variation, based on the current line
     private String[] getSectionsOfLine() {

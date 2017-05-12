@@ -1,5 +1,6 @@
 package org.engenomics.fhirconverter;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
@@ -10,28 +11,42 @@ public class Main {
     private static SeqGraphVCF graph = new SeqGraphVCF();
 
     public static void main(String[] args) throws IOException {
-//        new Main().createFile();
+        new Main().createFile();
         new Main().runSGVtoJSON();
     }
 
     private void createFile() {
-        System.out.println(graph.fileHeader);
+        //System.out.println(graph.fileHeader);
         graph.createSequenceGraphVCF(10);
     }
 
     private void runSGVtoJSON() throws IOException {
         SGVtoJSON converter = new SGVtoJSON(graph.readFilePath);
-        converter.convert("C:\\Users\\Andrew\\workspace\\PRIMES\\fhir-converter\\sampleSeqGraphOutput.txt");
+        String home = System.getProperty("user.dir");
+        converter.convert(home+ File.separator + "private" + File.separator + "output.txt");
 
         List<JSONObject> jsonFiles = converter.getObjs();
 
-        System.out.println(jsonFiles.get(0));
+        String UUID = converter.getSequences().get(0).getUUID();
 
-        new File(System.getProperty("user.dir") + "/jsonoutput").mkdirs();
-
-        for (int i = 0; i < jsonFiles.size(); i++) {
+        new File(home+ File.separator + "private" + File.separator + "jsonoutput").mkdirs();
+        
+        try {
+			Utils.writeToFile(Utils.getFhirBundle(jsonFiles).toString(4), 
+					home+ File.separator + "private" + File.separator + "jsonoutput" + File.separator + UUID + "-sequences.json");
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        //System.out.println(System.getProperty("user.dir") + "/private/jsonoutput");
+        /*for (int i = 0; i < jsonFiles.size(); i++) {
             JSONObject jsonObject = jsonFiles.get(i);
-            Utils.writeToFile(jsonObject.toString(4), System.getProperty("user.dir") + "/jsonoutput/" + i + ".json");
-        }
+            try {
+				Utils.writeToFile(jsonObject.toString(4), home+ File.separator + "private" + File.separator + "jsonoutput" + File.separator + i + ".json");
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+        }*/
     }
 }

@@ -1,0 +1,11 @@
+## Plugin-specific files:
+
+# IntelliJ
+/out/
+/private/
+
+### Java
+
+*.class
+.classpath
+.project
