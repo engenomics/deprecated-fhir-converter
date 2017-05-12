@@ -2,7 +2,8 @@
 
 # IntelliJ
 /out/
-/private/
+/private/sequences
+/private/bundle
 
 ### Java
 
