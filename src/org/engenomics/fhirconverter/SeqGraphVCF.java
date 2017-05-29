@@ -11,7 +11,7 @@ import java.io.File;
 
 public class SeqGraphVCF {
 	//change the vcf filename here. Will move to argument based later
-	public String filename = "5797.23andme-exome-vcf.4274";
+	public String filename = "test.vcf";
 	public String fileHeader = "CHROM\tWinStart\tWinEnd\tPOS\tAllele\tGT\tQual\tRefBuild\tUUID";
     public String home = System.getProperty("user.dir");
     public String readFilePath = home+ File.separator + "private" + File.separator + filename;

@@ -1,0 +1,19 @@
+{
+    "identifier": [{
+        "system": "http://hospital.smarthealthit.org",
+        "type": {"coding": [{
+            "system": "http://hl7.org/fhir/v2/0203",
+            "code": "MR",
+            "display": "Medical Record Number"
+        }]},
+        "value": "MRN123"
+    }],
+    "gender": "female",
+    "name": [{
+        "given": ["GIVEN NAME"],
+        "family": "FAMILY NAME"
+    }],
+    "id": "General_ID123",
+    "birthDate": "1999-01-01",
+    "resourceType": "Patient"
+}

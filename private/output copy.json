@@ -1,0 +1,21 @@
+{"resourceType": "Sequence",
+     "type": "DNA",
+     "text":
+        {"status": "generated",
+         "div": "Genotype of rs71662879 is A/A"
+         },
+     "referenceSeq": [
+        {
+         "chromosome": {"text": "1"},
+         "genomeBuild": {"text": "GRCh37"},
+         "windowStart": 114951390,
+         "windowEnd": 114951390
+         }],
+     "variation":
+        {
+         "start": 114951390,
+         "end": 114951390,
+         "observedAllele": "A",
+         "referenceAllele": "T"
+         }
+   }

@@ -162,7 +162,7 @@ public class Sewi {
 			sequence.put("resourceType", "Sequence");
 					
 			sequence.put("identifier", identifier);	
-			sequence.put("type", "DNA");
+			sequence.put("type", "dna");
 			sequence.put("coordinateSystem", Integer.valueOf(1));
 			sequence.put("referenceSeq", new JSONObject(referenceSeq));
 			sequence.put("variant", variant);

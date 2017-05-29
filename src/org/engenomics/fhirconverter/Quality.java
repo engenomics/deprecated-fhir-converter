@@ -43,7 +43,7 @@ class Quality {
 	public JSONObject getFhirQualObj(){
 		LinkedHashMap<Object, Object> quality = new LinkedHashMap<Object, Object>();
 		try {
-			quality.put("type", "SNP");
+			quality.put("type", "unknown");
 			quality.put("start", Integer.valueOf(this.getStart()));
 			quality.put("end", Integer.valueOf(this.getEnd()));
 			quality.put("score", new JSONObject().put("value", this.getScore()));
