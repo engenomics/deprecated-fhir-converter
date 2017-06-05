@@ -3,6 +3,7 @@ package org.engenomics.fhirconverter;
 import java.util.LinkedHashMap;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 class Variant {
@@ -50,7 +51,7 @@ class Variant {
 		this.observedAllele = observedAllele;
 	}
 	
-	public JSONObject getFhirVarJsonObj() {
+	public JSONObject getFhirVarJsonObj() throws JSONException {
 		LinkedHashMap<String, Object> variant = new LinkedHashMap<String, Object>();
 		LinkedHashMap<String, Object> extension = new LinkedHashMap<String, Object>();
 		extension.put("url", "allelePhase");
@@ -60,7 +61,9 @@ class Variant {
 		c.put("code", "LA4489-6");
 		c.put("display", "Unknown");
 		coding.put(new JSONObject(c));
-		extension.put("valueCodeableConcept", coding);
+		JSONObject valueCodeableConcept = new JSONObject();
+		valueCodeableConcept.put("coding", coding);
+		extension.put("valueCodeableConcept", valueCodeableConcept);
 		variant.put("extension", new JSONArray().put(new JSONObject(extension)));
 		
 		variant.put("start", Integer.valueOf(this.getStart()));

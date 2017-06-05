@@ -13,8 +13,6 @@ public class Sewi {
 	private String UUID;
     private int windowStart;
     private int windowEnd;
-    /*private String referenceAllele;
-    private String observedAllele;*/
 	private List<Variant> variants = new ArrayList<>();
     private String chromosome;
     private List<Quality> qualities = new ArrayList<>();

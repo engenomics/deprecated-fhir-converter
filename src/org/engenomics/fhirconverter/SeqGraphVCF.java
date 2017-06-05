@@ -11,10 +11,11 @@ import java.io.File;
 
 public class SeqGraphVCF {
 	//change the vcf filename here. Will move to argument based later
-	public String filename = "test.vcf";
+	public String filename = "oceanted.vcf";
 	public String fileHeader = "CHROM\tWinStart\tWinEnd\tPOS\tAllele\tGT\tQual\tRefBuild\tUUID";
     public String home = System.getProperty("user.dir");
-    public String readFilePath = home+ File.separator + "private" + File.separator + filename;
+    public String readFilePath = home+ File.separator + "private" + File.separator + "vcf" + File.separator + filename;
+   // public String readFilePath = home+ File.separator + "private" + File.separator + "test.vcf";
     public String outputFilePath = home+ File.separator + "private" + File.separator + "output.txt";
     
     private BufferedWriter writer;
@@ -104,7 +105,14 @@ public class SeqGraphVCF {
                 	//Get test uuid
                 	if (!lineFetched.contains("##")) {uuid = wordsArray[9];}
                 } else {
-                	if (!chromosome.equals(String.valueOf(wordsArray[0].charAt(wordsArray[0].length() - 1)))){
+                	String currentChromosome;
+                	if (wordsArray[0].contains("X")||wordsArray[0].contains("Y")){
+                		currentChromosome = String.valueOf(wordsArray[0].charAt(wordsArray[0].length() - 1));
+                		    		
+                	}else{
+                		currentChromosome = wordsArray[0].replaceAll("[^0-9]", ""); 
+                	} 
+                	if (!chromosome.equals(currentChromosome)){
                 		if (GT.equals("0/0") || GT.equals("0|0") || GT.equals("./.") || GT.equals(".|.")){
                 			endKMerPosition = wordsArray[1];
                 			String allele = wordsArray[3] + ">" + wordsArray[4];
@@ -119,10 +127,11 @@ public class SeqGraphVCF {
                 		
                 	}
                     
-                	if (wordsArray[0].length() > 1){
+                	if (wordsArray[0].contains("X")||wordsArray[0].contains("Y")){
                 		chromosome = String.valueOf(wordsArray[0].charAt(wordsArray[0].length() - 1));
+                		    		
                 	}else{
-                		chromosome = wordsArray[0];
+                		chromosome = wordsArray[0].replaceAll("[^0-9]", ""); 
                 	}
                 	
                     

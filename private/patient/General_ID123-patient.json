@@ -6,14 +6,14 @@
             "code": "MR",
             "display": "Medical Record Number"
         }]},
-        "value": "MRN123"
+        "value": "MRN12047"
     }],
-    "gender": "female",
+    "gender": "male",
     "name": [{
-        "given": ["GIVEN NAME"],
-        "family": "FAMILY NAME"
+        "given": ["Jack"],
+        "family": "Lee"
     }],
     "id": "General_ID123",
-    "birthDate": "1999-01-01",
+    "birthDate": "1974-04-12",
     "resourceType": "Patient"
 }
