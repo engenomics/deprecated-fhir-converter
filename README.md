@@ -8,6 +8,6 @@ Then tranlate each csv line into Sequence FHIR json files.
 The associated Patient FHIR josn file need to manually type inside the code,
 will provide a convenient input way in next version.
 
-It is able to do Http Post for your json file to your fhir server. 
+It is able to do Http Post for your json file to your fhir server.
 
 The code at the moment is not very clean, but it works as expected.

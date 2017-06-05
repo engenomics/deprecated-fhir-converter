@@ -24,6 +24,7 @@ public class Main {
 	 };
 
     public static void main(String[] args) throws IOException {
+    	new File(System.getProperty("user.dir") + File.separator + "private").mkdirs();
         new Main().createFile();
         new Main().runSGVtoJSON();
     	//new Main().getFHIRData();
