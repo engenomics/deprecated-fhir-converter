@@ -1,0 +1,19 @@
+{
+    "identifier": [{
+        "system": "http://hospital.smarthealthit.org",
+        "type": {"coding": [{
+            "system": "http://hl7.org/fhir/v2/0203",
+            "code": "MR",
+            "display": "Medical Record Number"
+        }]},
+        "value": "MRN12047"
+    }],
+    "gender": "male",
+    "name": [{
+        "given": ["Jack"],
+        "family": "Lee"
+    }],
+    "id": "General_ID123",
+    "birthDate": "1974-04-12",
+    "resourceType": "Patient"
+}
